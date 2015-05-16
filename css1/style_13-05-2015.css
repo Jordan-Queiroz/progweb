@@ -1,0 +1,17 @@
+body {
+	background-image: url(gradiente.png);
+	background-color: #d9d9d9;
+	background-repeat: repeat-x;
+}
+
+h1 {
+	color: black;
+	font-family: serif;
+	font-size: 30px;
+}
+
+p {
+	color: black;
+	font-family: serif;
+	font-size: 20px;
+}

@@ -1,0 +1,16 @@
+p {
+	color: black;
+	font-family: serif;
+	font-size: 20px;
+
+	border: 10px solid black;
+	border-top-right-radius: 105px;
+	border-bottom-left-radius: 105px;
+	border-bottom-right-radius: 15px;
+	border-top-left-radius: 15px;
+
+	padding: 5px 60px 5px 60px;
+	width: 300px;
+	
+	background-color: lightgray;
+}
