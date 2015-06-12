@@ -1,0 +1,13 @@
+body {
+	background-image: url("deus_ex.jpg");
+	background-size: 1400px 900px;
+}
+
+pre {
+	font-family: serif;
+	background-color: lightgray;
+}
+
+strong, span, p {
+	color: white;
+}
