@@ -1,0 +1,41 @@
+body {
+	background-image: url("dotswallpaper.jpg");
+}
+
+#gameTable {
+	padding: 0px;
+	margin: 0px;
+	line-height: 0px;
+	border: 5px solid lightgreen;
+	border-radius: 10px;
+	padding: 10px;
+	background-color: rgba(255, 102, 0, 0.5);
+	box-shadow: 4px 4px 10px 2px black;
+
+}
+
+#playerTable {
+	border: 5px solid lightgreen;
+	border-radius: 10px;
+	padding: 10px;
+	background-color: rgba(255, 102, 0, 0.5);
+	box-shadow: 4px 4px 10px 2px black;
+}
+
+#mainTable {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 80px;
+}
+
+#pre1, #pointsP1, #pl1{
+	font-family: serif;
+	color: green;
+	font-weight: bold;
+}
+
+#pre2, #pointsP2, #pl2{
+	font-family: serif;
+	color: yellow;
+	font-weight: bold;
+}
