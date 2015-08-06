@@ -39,5 +39,6 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
     <p>Em nossa base, existem <?= $queryCount ?> alunos de <?= $year ?></p>
+    <?= Html::a('Alunos da turma', ['turma', 'year' => $year], ['class' => 'btn btn-primary']) ?>
 
 </div>

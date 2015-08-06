@@ -49,28 +49,21 @@ class AlunoController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id)
-    {
-       /* $queryAluno = new Query;
-        $queryAluno->select('ano_ingresso')
-                   ->from('aluno')
-                   ->where('id='.$id)
-                   ->all();
-        //$number = queryAluno->all();
-       /* $queryCount = new Query;
-        $queryCount->count();
-              ->from('aluno')
-              ->where('ano_ingresso = {$year}'); */
-        $queryAluno = Aluno::findOne(['id'=>$id]);
-        $queryCount = Aluno::find()->where('ano_ingresso='.$queryAluno->ano_ingresso)->count();
+    public function actionView($id=0)
+    {   
 
-        if (isset($id)){  
+        if ($id==0){  
+            $queryAluno = Aluno::findOne(['matricula'=>21201414]);
+            $queryCount = Aluno::find()->where('ano_ingresso='.$queryAluno->ano_ingresso)->count();
             return $this->render('view', [
-                'model' => $this->findModel($id), 'queryCount'=>$queryCount, 'year'=>$queryAluno->ano_ingresso
+                'model' =>  Aluno::findOne(['matricula'=>21201414]), 'queryCount'=>$queryCount, 'year'=>$queryAluno->ano_ingresso
             ]);
         } else {
+            $queryAluno = Aluno::findOne(['id'=>$id]);
+            $queryCount = Aluno::find()->where('ano_ingresso='.$queryAluno->ano_ingresso)->count();
             return $this->render('view', [
-                'model' => $this->findModel(21201414), //1305
+                'model' => $this->findModel($id),
+                'queryCount'=>$queryCount, 'year'=>$queryAluno->ano_ingresso
             ]);
         }
     }
@@ -83,18 +76,12 @@ class AlunoController extends Controller
     public function actionCreate()
     {
         $model = new Aluno();
-        //$courses = Curso::find()->where(['id'=>'1'])->select('nome');//findOne(1)->select("nome"); //findAll('[1,2,3]');//find()->where(["id=1 || id=2 || id=3"])->select("nome");
-
-        $query = new Query;
-        $query->select('nome')
-              ->from('curso');
-        $courses = $query->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
-                'model' => $model, 'courses' => $courses
+                'model' => $model,
             ]);
         }
     }
@@ -102,8 +89,6 @@ class AlunoController extends Controller
     public function actionTurma($year){
 
         $searchModel = new AlunoSearch();
-        //$queryTurma = $searchModel->search('ano_ingresso = '.$year);
-        //Aluno::find()->where('ano_ingresso = '.$year)->all();
 
         $queryTurma = new ActiveDataProvider([
             'query' => Aluno::find()->
@@ -128,16 +113,11 @@ class AlunoController extends Controller
     {
         $model = $this->findModel($id);
 
-        $query = new Query;
-        $query->select('nome')
-              ->from('curso');
-        $courses = $query->all();
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
-                'model' => $model, 'courses' => $courses
+                'model' => $model,
             ]);
         }
     }
@@ -171,21 +151,5 @@ class AlunoController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-    /*# Legal, mas como usar isso?
-    public function beforeAction($action)
-    {
-        if (!parent::beforeAction($action)) {
-            return false;
-        }
-
-        return true; // or false to not run the action
-    }*/
-    /*protected function findModel()
-    {
-        if (($model = Aluno::findOne('21201414')) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
-    }*/
+    
 }

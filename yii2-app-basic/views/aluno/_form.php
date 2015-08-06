@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use app\models\Curso;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Aluno */
@@ -19,8 +21,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'sexo')->dropDownList(['Feminino'=>'Feminino','Masculino'=>'Masculino']) ?>
 
-    <?= $form->field($model, 'id_curso')->dropDownList($courses)?>
-
+    <?= $form->field($model, 'id_curso')->dropDownList(ArrayHelper::map(Curso::find()->all(), 'id','nome')) ?>
+    
     <?= $form->field($model, 'ano_ingresso')->textInput() ?>
 
     <div class="form-group">
