@@ -79,4 +79,10 @@ class Aluno extends \yii\db\ActiveRecord
         $this->id_curso = $this->curso->nome;
     }
 
+    public function beforeSave($insert)
+    {
+        $this->nome = strtoupper($this->nome);
+        return parent::beforeSave($insert);
+    }
+
 }
